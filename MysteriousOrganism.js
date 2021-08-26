@@ -32,8 +32,6 @@ this.dna[j]=returnRandBase()
   }
      }
    }
-
-  
   /*for(let i = 0; i<this.dna.length; i++){
     if(this.dna[i] ==='A'){
       this.dna[i] = "T";
@@ -75,6 +73,22 @@ let calculated = ((countS/this.dna.length)*100).toFixed(2);
 if (calculated>=60){
  return true
 } 
+},
+
+complementStrand(){
+  let complementStrand=[];
+   for(let i =0; i<this.dna.length; i++){
+   if(this.dna[i]==="A"){
+   complementStrand.push("T");
+  } else if(this.dna[i]==="T"){
+   complementStrand.push("A");
+     }else if(this.dna[i]==="C"){
+   complementStrand.push("G");
+     }else if(this.dna[i]==="G"){
+   complementStrand.push("C");
+     }
+   }
+    return complementStrand;
 }
 
  }
@@ -85,12 +99,13 @@ if (calculated>=60){
 //calling instamce of pAequor  
 let pAequor = pAequorFactory(1, mockUpStrand());
 console.log("pAequor initial dna :", pAequor.dna);
-
 // Dna after mutation
 console.log("dna after mutation :", pAequor.mutate());
 //comparing 2 paequor
 let paequorS = pAequorFactory(15, mockUpStrand());
 console.log("pAequorS initial dna :", paequorS.dna);
+// complementary strand
+console.log("complementary Strand :", paequorS.complementStrand());
 // Dna after mutation
 console.log("dna after mutation :", paequorS.mutate());
 paequorS.compareDNA(pAequor);
